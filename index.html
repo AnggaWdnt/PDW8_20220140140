@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Seleksi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            position: relative;
+            background: url('https://wallpaperaccess.com/full/3518004.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-section {
+            padding: 50px;
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+    </div>
+</section>
+
+<section class="container my-5">
+    <h1>Welcome Enjoyers</h1>
+</section>
+
+<!-- About Section -->
+<section class="container my-5">
+    <h2>Tentang Website ini</h2>
+    <p>Kami adalah platform yang memberikan peluang dan dukungan kepada para gamers di seluruh dunia. Bergabunglah dengan komunitas kami dan kembangkan bakatmu!</p>
+</section>
+
+<!-- Form Section -->
+<section class="form-section">
+    <div class="container">
+        <h2>Daftar Sekarang</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" class="form-control" id="name" placeholder="Masukkan Nama">
+            </div>
+            <div class="form-group">
+                <label for="age">Umur:</label>
+                <input type="text" class="form-control" id="age" placeholder="Masukkan Umur">
+            </div>
+            <div class="form-group">
+                <label>Jenis Kelamin:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="male">Laki-laki</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="female">Perempuan</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="interests">Minat:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Jungler" value="Jungler">
+                    <label class="form-check-label" for="Jungler">Jungler</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Marksman" value="Marksman">
+                    <label class="form-check-label" for="Marksman">Marksman</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Midlane" value="Midlane">
+                    <label class="form-check-label" for="Midlane">Midlane</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Roam" value="Roam">
+                    <label class="form-check-label" for="Roam">Roam</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Explane" value="Explane">
+                    <label class="form-check-label" for="Explane">Explane</label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="showMessage()">Submit</button>
+        </form>
+        <div id="message" class="mt-3"></div>
+    </div>
+</section>
+
+<script>
+    function showMessage() {
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const interests = document.querySelectorAll('input[type="checkbox"]:checked');
+        
+        if (name && age && gender && interests.length > 0) {
+            const genderText = gender.value === 'male' ? 'Laki-laki' : 'Perempuan';
+            const interestsText = Array.from(interests).map(checkbox => checkbox.value).join(', ');
+            document.getElementById('message').innerHTML = `
+                <div class="alert alert-success" role="alert">
+                    Halo ${name}! Kamu terdaftar sebagai: ${interestsText}.
+                </div>`;
+        } else {
+            document.getElementById('message').innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    Harap isi semua form.
+                </div>`;
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
